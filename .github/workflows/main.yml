@@ -31,7 +31,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: us-east-1
           role-session-name: GitHub-OIDC-TERRAFORM
 
     - name: Login to Amazon ECR
