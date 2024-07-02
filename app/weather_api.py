@@ -13,6 +13,10 @@ app = FastAPI()
 pickle_in = open('artifacts/model-scaler.pkl', 'rb')
 scaler = pickle.load(pickle_in)
 
+#Testing dummy secrets
+aws-access-key = "suoijdksjkjsd"
+aws-access-secret = "sgduihsdjcjdhcudiKDCBSDIUEIDJSDBCIUEYDOIWEDKWNENkueeduydgidjc"
+
 # Load the model
 sess = rt.InferenceSession('artifacts/svc.onnx')
 input_name = sess.get_inputs()[0].name
