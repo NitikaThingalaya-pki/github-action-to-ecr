@@ -65,5 +65,5 @@ jobs:
         IMAGE_TAG: test_ml_image
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        ./wizcli docker scan --image ***.dkr.ecr.us-east-1.amazonaws.com/test_ml_demo:test_ml_image
+        ./wizcli docker scan --image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
