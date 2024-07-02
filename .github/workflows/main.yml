@@ -58,7 +58,7 @@ jobs:
     #  run: ./wizcli iac scan --path . --policy "Revvity Infrastructure As Code Policy"
       
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, Tag, Scan image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: test_ml_demo
@@ -66,4 +66,12 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         ./wizcli docker scan --image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+       
+
+    - name: Push image to Amazon ECR if scan successfull
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: test_ml_demo
+        IMAGE_TAG: test_ml_image
+      run: |
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
