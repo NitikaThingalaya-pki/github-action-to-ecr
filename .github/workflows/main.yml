@@ -20,6 +20,11 @@ jobs:
 
     - name: Check out code
       uses: actions/checkout@v2
+
+    
+    - name: Checkout code
+      run: echo "Checked out the code"
+
     
 #    - name: Configure AWS credentials
 #      uses: aws-actions/configure-aws-credentials@v1
